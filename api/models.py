@@ -20,7 +20,7 @@ class Category(models.Model):
 class Book(models.Model):
   book_id = models.CharField(max_length=100, blank=True)
   image_path = models.CharField(max_length=1000, blank=True)
-  title = models.CharField(max_length=400, blank=True)
+  title = models.CharField(max_length=200, blank=True)
   author = models.ForeignKey(Author, on_delete=models.CASCADE, default=1)
   price = models.DecimalField(max_digits=19, decimal_places=10)
   category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
@@ -35,7 +35,7 @@ class Book(models.Model):
 class Cart(models.Model):
   # for user
   order_id = models.CharField(max_length=100, blank=True)
-  book_id = models.ForeignKey(Book)
+  book_id = models.ForeignKey(Book, on_delete=models.CASCADE, default=1)
   price = models.DecimalField(max_digits=19, decimal_places=10)
   quantity = models.IntegerField()
    
